@@ -132,7 +132,9 @@ export const outputExample = `
 
     ### Sugestão:
     - Validação e Tratamento de Erros para IDs Inválidos
-    Aqui, Request e Response são importados do pacote express para usar tipagem explícita nos parâmetros req e res, garantindo que as propriedades e métodos usados estejam corretos conforme definido pela biblioteca Express.
+    Arquivo: 'app.ts'
+    Linha: 1 e 62
+    Aprendizado: Aqui, Request e Response são importados do pacote express para usar tipagem explícita nos parâmetros req e res, garantindo que as propriedades e métodos usados estejam corretos conforme definido pela biblioteca Express.
     """typescript
     import { Request, Response } from 'express';
 
@@ -145,7 +147,9 @@ export const outputExample = `
     });
     """
     - Consistência na Resposta
-    Utilizamos a tipagem para os parâmetros da função, melhorando a verificação de tipo e prevenindo possíveis erros de execução.
+    Arquivo: 'app.ts'
+    Linha: 62
+    Aprendizado: Utilizamos a tipagem para os parâmetros da função, melhorando a verificação de tipo e prevenindo possíveis erros de execução.
     """typescript
     app.get('/user/:id', (req: Request, res: Response) => {
         const id = parseInt(req.params.id);
@@ -157,7 +161,9 @@ export const outputExample = `
     });
     """
     - Refatoração para Maior Clareza e Eficiência
-    A desestruturação é usada para extrair name e email, e a tipagem explícita de req e res assegura que os usos das propriedades desses objetos estão corretos.
+    Arquivo: 'app.ts'
+    Linha: 77
+    Aprendizado: A desestruturação é usada para extrair name e email, e a tipagem explícita de req e res assegura que os usos das propriedades desses objetos estão corretos.
     """typescript
     app.patch('/user/:id', (req: Request, res: Response) => {
         const { name, email } = req.body;
