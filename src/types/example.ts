@@ -131,16 +131,43 @@ export const outputExample = `
       - express.json() para parsing de JSON.
 
     ### Sugestão:
-    - Validação e Tratamento de Erros: Adicionar tratamento para IDs inválidos nas operações de GET, PATCH e DELETE.
-    - Consistência na Resposta: Usar return após enviar uma resposta em GET /user/:id para evitar erros de envio múltiplo de respostas.
-    - Refatoração para Maior Clareza: Simplificar as verificações de name e email em PATCH /user/:id usando valores truthy/falsy do JavaScript.
-    - Separação de Responsabilidades: Separar a lógica de controle e modelo de dados para manter o código organizado e facilitar futuras manutenções.
+    - Validação e Tratamento de Erros para IDs Inválidos
+    Aqui, Request e Response são importados do pacote express para usar tipagem explícita nos parâmetros req e res, garantindo que as propriedades e métodos usados estejam corretos conforme definido pela biblioteca Express.
+    """typescript
+    import { Request, Response } from 'express';
 
-    ### Aprendizado:
-    - Validação e Tratamento de Erros: Importância de verificar entradas inválidas e condições de erro para prevenir comportamentos indesejados e garantir a segurança.
-    - Consistência na Resposta: Necessidade de evitar múltiplos envios de resposta na mesma requisição para manter a estabilidade da API.
-    - Refatoração para Clareza: Benefícios de simplificar condições para tornar o código mais legível e fácil de manter.
-    - Separação de Responsabilidades: Vantagens de organizar o código em camadas para facilitar testes, manutenção e escalabilidade.
+    app.get('/user/:id', (req: Request, res: Response) => {
+        const id = parseInt(req.params.id);
+        if (isNaN(id) || id < 1) {
+            return res.status(400).json('ID inválido.');
+        }
+        // Continuação do código existente...
+    });
+    """
+    - Consistência na Resposta
+    Utilizamos a tipagem para os parâmetros da função, melhorando a verificação de tipo e prevenindo possíveis erros de execução.
+    """typescript
+    app.get('/user/:id', (req: Request, res: Response) => {
+        const id = parseInt(req.params.id);
+        const user = userList.find(user => user.id === id);
+        if (!user) {
+            return res.status(404).json('Não há nenhum usuário com o ID' + id);
+        }
+        res.status(200).json(user);
+    });
+    """
+    - Refatoração para Maior Clareza e Eficiência
+    A desestruturação é usada para extrair name e email, e a tipagem explícita de req e res assegura que os usos das propriedades desses objetos estão corretos.
+    """typescript
+    app.patch('/user/:id', (req: Request, res: Response) => {
+        const { name, email } = req.body;
+        if (!name && !email) {
+            return res.status(400).json('Forneça o nome ou o e-mail para atualizar.');
+        }
+        // Continuação do código existente...
+    });
+    """
+    - Separação de Responsabilidades: Separar a lógica de controle e modelo de dados para manter o código organizado e facilitar futuras manutenções.
 
     ### Elogio:
     - Qualidade do Código: O código é funcional e bem estruturado, abordando de maneira eficaz as operações necessárias para a gestão de usuários, mostrando bom uso das funcionalidades do Express.js.
