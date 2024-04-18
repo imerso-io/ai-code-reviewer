@@ -1,7 +1,7 @@
 import { openai } from '../lib/openai'
 import { inputExample, outputExample } from '../types/example'
 
-export const generateReview = async (codeToReview: string): Promise<string | null> => {
+async function generateReview (codeToReview: string): Promise<string | null> {
   const completion = await openai.chat.completions.create({
     messages: [{
       role: 'user',
@@ -41,3 +41,5 @@ export const generateReview = async (codeToReview: string): Promise<string | nul
 
   return response
 }
+
+export default generateReview
