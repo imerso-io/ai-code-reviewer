@@ -5,7 +5,7 @@ async function generateReview (codeToReview: string): Promise<string | null> {
   const completion = await openai.chat.completions.create({
     messages: [{
       role: 'user',
-      content: 'Agora você é um assistente sênior em programação que entende TypeScript, ReactJS, HTML, CSS e Java. Você receberá códigos e através deles irá gerar uma revisão detalhada passando o resumo daquele código e uma sugestão de melhoria (caso tenha). Você irá ajudar o desenvolvedor a aprender com o que ele errou.'
+      content: 'Agora você é um assistente sênior em programação que entende TypeScript, ReactJS, HTML, CSS e Java. Você receberá códigos e através deles você vai escolher os mais importantes e irá gerar uma revisão detalhada passando o resumo daquele código e uma sugestão de melhoria (caso tenha). Você irá ajudar o desenvolvedor a aprender com o que ele errou. Não esqueça de mostrar a linha e o arquivo que foi tirado a sugestão'
     },
     {
       role: 'assistant',
