@@ -1,0 +1,20 @@
+{
+  "name": "octopulls-reviewer-poc",
+  "version": "1.0.0",
+  "description": "This POC shows how AI acts as a reviewer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "review": "node src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.36.0",
+    "prisma": "^5.12.1",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "typescript": "^5.4.5"
+  }
+}
