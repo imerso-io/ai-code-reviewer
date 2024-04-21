@@ -7,17 +7,19 @@ const headers = ({
   "Content-Type": "application/json"
 })
 
-const user = ''
-const repo = ''
-const issuesNumber = 1
-const url = `https://api.github.com/repos/${user}/${repo}/issues/${issuesNumber}/comments`
+const params = {
+  user: process.env.GITHUB_USER,
+  repo: process.env.GITHUB_REPO,
+  issuesNumber: process.env.GITHUB_PULL_NUMBER
+}
+const url = `https://api.github.com/repos/${params.user}/${params.repo}/issues/${params.issuesNumber}/comments`
 
-async function postComments(comment: string) {
+async function postComments(comment: string | null) {
   try {
-    const response = await axios.post(url, { body: comment }, { headers })
+    await axios.post(url, { body: comment }, { headers })
 
-    console.log(response.data)
+    return 'Comentário postado com sucesso!'
   } catch (err) { console.log(err) }
 }
 
-postComments('Testando comentário de commit no GitHub')
+export default postComments
