@@ -1,15 +1,18 @@
 import 'dotenv/config'
 import axios from 'axios'
+import createCodeToReview from './create-code-to-review'
 
 const headers = ({
   'Authorization': `token ${process.env.GITHUB_TOKEN}`,
   'Accept': 'application/vnd.github.v3+json'
 })
 
-const user = ''
-const repo = ''
-const pullNumber = 1
-const url = `https://api.github.com/repos/${user}/${repo}/pulls/${pullNumber}/commits`
+const params = {
+  user: process.env.GITHUB_USER,
+  repo: process.env.GITHUB_REPO,
+  pullNumber: process.env.GITHUB_PULL_NUMBER
+}
+const url = `https://api.github.com/repos/${params.user}/${params.repo}/pulls/${params.pullNumber}/commits`
 
 async function getCommits() {
   try {
@@ -17,15 +20,8 @@ async function getCommits() {
 
     const commits = await response.data
 
-    for (const commit of commits) {
-      const url = `https://api.github.com/repos/${user}/${repo}/commits/${commit.sha}`
-      const response = await axios.get(url, { headers })
-
-      const commitDetails = await response.data
-
-      console.log(commitDetails)
-    }
-  } catch (err) { console.log(err); }
+    createCodeToReview(commits, headers, params)
+  } catch (err) { console.log(err) }
 }
 
-getCommits()
+export default getCommits
