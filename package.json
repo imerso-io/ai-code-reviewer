@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "review": "ts-node src/index.ts",
-    "commits": "ts-node src/services/get-commit-github.ts",
-    "comment": "ts-node src/services/post-comment-github.ts"
+    "review": "ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
