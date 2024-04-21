@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import axios from 'axios'
-import createCodeToReview from './create-code-to-review'
+import commitIterator from './commit-iterator'
 
 const headers = ({
   'Authorization': `token ${process.env.GITHUB_TOKEN}`,
@@ -20,7 +20,7 @@ async function getCommits() {
 
     const commits = await response.data
 
-    createCodeToReview(commits, headers, params)
+    commitIterator(commits, headers, params)
   } catch (err) { console.log(err) }
 }
 

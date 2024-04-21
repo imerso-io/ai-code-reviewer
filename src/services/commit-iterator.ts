@@ -1,7 +1,7 @@
 import axios from 'axios'
 import generateReview from './generate-review'
 
-async function createCodeToReview(commits: any, headers: any, params: any) {
+async function commitIterator(commits: any, headers: any, params: any) {
   let codeToReview = ''
 
   for (const commit of commits) {
@@ -19,4 +19,4 @@ async function createCodeToReview(commits: any, headers: any, params: any) {
   generateReview(codeToReview)
 }
 
-export default createCodeToReview
+export default commitIterator
