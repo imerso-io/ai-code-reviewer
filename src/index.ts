@@ -1,9 +1,5 @@
-import generateReview from './services/generate-review'
-import fs from 'fs'
+import getCommits from './services/get-commit-github'
 
-const filePath = './src/paste_your_code.ts'
-const codeToReview = fs.readFileSync(filePath, 'utf-8')
-
-generateReview(codeToReview)
-  .then(data => console.log(data))
-  .catch(err => console.error(err))
+getCommits()
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err))
