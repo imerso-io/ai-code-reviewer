@@ -14,7 +14,7 @@ const params = {
 }
 const url = `https://api.github.com/repos/${params.user}/${params.repo}/issues/${params.issuesNumber}/comments`
 
-async function postComments(comment: string | null) {
+async function postComments(comment: string | null): Promise<string | void> {
   try {
     await axios.post(url, { body: comment }, { headers })
 

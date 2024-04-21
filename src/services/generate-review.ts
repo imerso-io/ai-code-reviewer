@@ -2,7 +2,7 @@ import { openai } from '../lib/openai'
 import { inputExample, outputExample } from '../types/example'
 import postComment from './post-comment-github'
 
-async function generateReview(codeToReview: string): Promise<void> {
+async function generateReview(codeToReview: string) {
   const completion = await openai.chat.completions.create({
     messages: [{
       role: 'user',
@@ -39,7 +39,7 @@ async function generateReview(codeToReview: string): Promise<void> {
 
   const response = completion.choices[0].message.content
 
-  postComment(response)
+  return postComment(response)
 }
 
 export default generateReview

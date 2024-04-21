@@ -16,7 +16,7 @@ async function commitIterator(commits: any, headers: any, params: any) {
     ).join('\n\n')
   }
 
-  generateReview(codeToReview)
+  return generateReview(codeToReview)
 }
 
 export default commitIterator

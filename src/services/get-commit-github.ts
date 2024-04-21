@@ -20,7 +20,7 @@ async function getCommits() {
 
     const commits = await response.data
 
-    commitIterator(commits, headers, params)
+    return commitIterator(commits, headers, params)
   } catch (err) { console.log(err) }
 }
 
