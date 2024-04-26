@@ -9,13 +9,13 @@ Comando | Descrição
 `npm run review` | Gera revisão do seu código por IA integrado com GitHub
 
 ## Variáveis de Ambiente
-Variável | Descrição
---- | ---
-[OPENAI_KEY](https://platform.openai.com/api-keys) | Chave de API da OpenAI (ChatGPT)
-[GITHUB_TOKEN](https://github.com/settings/tokens) | Token de acesso do GitHub para aplicações
-GITHUB_USER | Nome da organização ou usuário que vai ter acesso ao repositório para revisão
-GITHUB_REPO | Nome do repositório que vai ter os PRs revisados
-GITHUB_PULL_NUMBER | Número do Pull Request que terá os commits obtidos para revisão
+Variável | Descrição | Obrigatório
+--- | --- | ---
+[OPENAI_KEY](https://platform.openai.com/api-keys) | Chave de API da OpenAI (ChatGPT) | Sim
+[GITHUB_TOKEN](https://github.com/settings/tokens) | Token de acesso do GitHub para aplicações | Não
+GITHUB_USER | Nome da organização ou usuário que vai ter acesso ao repositório para revisão | Sim
+GITHUB_REPO | Nome do repositório que vai ter os PRs revisados | Sim
+GITHUB_PULL_NUMBER | Número do Pull Request que terá os commits obtidos para revisão | Sim
 
 ## Funções
 Função | Nome | Descrição
