@@ -1,9 +1,8 @@
-import { openai } from '../lib/openai'
-import { inputExample, outputExample } from '../types/example'
-import postComment from './post-comment-github'
+import { openaiClient } from '../clients'
+import { inputExample, outputExample } from '../utils'
 
-async function generateReview(codeToReview: string) {
-  const completion = await openai.chat.completions.create({
+async function generateReview(codeToReview: string): Promise<string | null> {
+  const completion = await openaiClient.chat.completions.create({
     messages: [{
       role: 'user',
       content: 'Agora você é um assistente sênior em programação que entende TypeScript, ReactJS, HTML, CSS e Java. Você irá ajudar o desenvolvedor a aprender com o que ele errou. Não esqueça de mostrar a linha e o arquivo que foi tirado a sugestão'
@@ -39,7 +38,7 @@ async function generateReview(codeToReview: string) {
 
   const response = completion.choices[0].message.content
 
-  return postComment(response)
+  return response
 }
 
 export default generateReview
