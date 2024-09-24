@@ -1,4 +1,4 @@
-import openaiClient from '../clients/open-ai-client'
+import { openaiClient } from '../clients'
 import { inputExample, outputExample } from '../types/example'
 
 async function generateReview(codeToReview: string): Promise<string | null> {

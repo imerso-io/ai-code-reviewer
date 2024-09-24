@@ -1,5 +1,5 @@
-import githubClient from '../clients/github-client'
-import { Commits, File, FilesChanged } from '../types/commits'
+import githubClient from '../clients'
+import { Commits, File, FilesChanged } from '../types'
 import generateReview from './generate-review'
 
 export async function postCommentOnGithub() {
