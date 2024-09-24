@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { CommitsResult, FilesChangedResult } from '../types/commits'
+import { CommitsResult, FilesChangedResult } from '../types'
 
 class Github {
   private axiosInstance: AxiosInstance
