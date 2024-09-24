@@ -3,15 +3,15 @@ import { CommitsResult, FilesChangedResult } from '../types/commits'
 
 class Github {
   private axiosInstance: AxiosInstance
-  private apiKey: string | undefined
-  private organization: string | undefined
-  private repository: string | undefined
-  private pullNumber: number | undefined
+  private apiKey: string
+  private organization: string
+  private repository: string
+  private pullNumber: number
 
   constructor() {
-    this.apiKey = process.env.GITHUB_AUTH_TOKEN
-    this.organization = process.env.GITHUB_ORGANIZATION
-    this.repository = process.env.GITHUB_REPOSITORY
+    this.apiKey = process.env.GITHUB_AUTH_TOKEN ?? ''
+    this.organization = process.env.GITHUB_ORGANIZATION ?? ''
+    this.repository = process.env.GITHUB_REPOSITORY ?? ''
     this.pullNumber = Number(process.env.GITHUB_PULL_NUMBER)
     this.axiosInstance = axios.create({
       baseURL: 'https://api.github.com/repos/'

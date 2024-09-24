@@ -1,5 +1,5 @@
-import getCommits from './services/get-commit-github'
+import { postCommentOnGithub } from './lib'
 
-getCommits()
+postCommentOnGithub()
   .then((res) => console.log(res))
   .catch((err) => console.log(err))

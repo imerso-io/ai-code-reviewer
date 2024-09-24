@@ -11,16 +11,8 @@ Comando | Descrição
 ## Variáveis de Ambiente
 Variável | Descrição | Obrigatório
 --- | --- | ---
-[OPENAI_KEY](https://platform.openai.com/api-keys) | Chave de API da OpenAI (ChatGPT) | Sim
-[GITHUB_TOKEN](https://github.com/settings/tokens) | Token de acesso do GitHub para aplicações | Não
-GITHUB_USER | Nome da organização ou usuário que vai ter acesso ao repositório para revisão | Sim
-GITHUB_REPO | Nome do repositório que vai ter os PRs revisados | Sim
+[OPENAI_API_KEY](https://platform.openai.com/api-keys) | Chave de API da OpenAI (ChatGPT) | Sim
+[GITHUB_AUTH_TOKEN](https://github.com/settings/tokens) | Token de acesso do GitHub para aplicações | Não
+GITHUB_ORGANIZATION | Nome da organização ou usuário que vai ter acesso ao repositório para revisão | Sim
+GITHUB_REPOSITORY | Nome do repositório que vai ter os PRs revisados | Sim
 GITHUB_PULL_NUMBER | Número do Pull Request que terá os commits obtidos para revisão | Sim
-
-## Funções
-Função | Nome | Descrição
---- | --- | ---
-getCommit() | Obtém Commits | Após passar as variáveis de ambiente, obtém todos os commits de um Pull Request e envia para a próxima função
-commitIterator() | Itera Commits | Itera todos os commits obtidos para colocar em uma única string antes de enviá-la para o revisor de código
-generateReview() | Gera Revisão | Gera revisão por Inteligência Artificial baseado no método few-shot com o código obtido e chama a função de comentar
-postComment() | Posta Comentário | Após receber a revisão da IA, psota um comentário no Pull Request

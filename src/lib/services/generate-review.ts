@@ -1,5 +1,5 @@
 import { openaiClient } from '../clients'
-import { inputExample, outputExample } from '../types/example'
+import { inputExample, outputExample } from '../utils'
 
 async function generateReview(codeToReview: string): Promise<string | null> {
   const completion = await openaiClient.chat.completions.create({
