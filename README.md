@@ -12,7 +12,7 @@ Comando | Descrição
 Variável | Descrição | Obrigatório
 --- | --- | ---
 [OPENAI_API_KEY](https://platform.openai.com/api-keys) | Chave de API da OpenAI (ChatGPT) | Sim
-[GITHUB_AUTH_TOKEN](https://github.com/settings/tokens) | Token de acesso do GitHub para aplicações | Não
+[GITHUB_AUTH_TOKEN](https://github.com/settings/tokens) | Token de acesso do GitHub para aplicações | Sim
 GITHUB_ORGANIZATION | Nome da organização ou usuário que vai ter acesso ao repositório para revisão | Sim
 GITHUB_REPOSITORY | Nome do repositório que vai ter os PRs revisados | Sim
 GITHUB_PULL_NUMBER | Número do Pull Request que terá os commits obtidos para revisão | Sim
