@@ -43,6 +43,8 @@ async function generateReview(codeToReview: string): Promise<string | null> {
 
   const response = completion.choices[0].message.content
 
+  if (!response) return null
+
   return response
 }
 

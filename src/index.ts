@@ -1,8 +1,5 @@
 import { logger, postCommentOnGithub } from './libs'
 
-try {
-  const response = await postCommentOnGithub()
-  logger.info(response)
-} catch (e) {
-  logger.error(e)
-}
+postCommentOnGithub()
+  .then((response) => { logger.info(response) })
+  .catch((error) => { logger.error(error) })

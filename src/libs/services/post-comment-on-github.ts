@@ -1,9 +1,5 @@
 import githubClient from '../clients'
-import {
-  type Commits,
-  type File,
-  type FilesChanged
-} from '../types'
+import { type File } from '../types'
 import generateReview from './generate-review'
 
 /**
