@@ -1,6 +1,11 @@
 import { openaiClient } from '../clients'
-import { inputExample, outputExample } from '../utils'
+import { codeInputExample, codeOutputExample } from '../utils'
 
+/**
+ *  Generate a review for the code
+ *  @param {string} codeToReview - The code to review
+ *  @returns {Promise<string | null>} - Returns revised code
+*/
 async function generateReview(codeToReview: string): Promise<string | null> {
   const completion = await openaiClient.chat.completions.create({
     messages: [{
@@ -17,12 +22,12 @@ async function generateReview(codeToReview: string): Promise<string | null> {
 
       As respostas devem ser em TÓPICOS.
       """
-      ${inputExample}
+      ${codeInputExample}
       """`
     },
     {
       role: 'assistant',
-      content: outputExample
+      content: codeOutputExample
     },
     {
       role: 'user',

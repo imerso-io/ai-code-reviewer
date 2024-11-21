@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
-import { CommitsResult, FilesChangedResult } from '../types'
+import { type CommitsResult, type FilesChangedResult } from '../types'
 
 class Github {
   private axiosInstance: AxiosInstance
@@ -18,6 +18,10 @@ class Github {
     })
   }
 
+   /**
+   *  GET - Get the commits for a pull request
+   *  @returns {Promise<CommitsResult>} - The response from the API
+  */
   async getCommits(): Promise<CommitsResult> {
     const response = await this.axiosInstance.get(`${this.organization}/${this.repository}/pulls/${this.pullNumber}/commits`, {
       headers: {
@@ -29,6 +33,11 @@ class Github {
     return response
   }
 
+  /**
+   *  GET - Get the files changed in a commit
+   *  @param {string} commitHash - The hash of the commit
+   *  @returns {Promise<FilesChangedResult>} - The response from the API
+  */
   async getFilesChanged(commitHash: string): Promise<FilesChangedResult> {
     const response = await this.axiosInstance.get(`${this.organization}/${this.repository}/commits/${commitHash}`, {
       headers: {
@@ -40,6 +49,10 @@ class Github {
     return response
   }
 
+  /**
+   *  POST - Post a comment (review) on a pull request
+   *  @param {string | null} comment - The comment to post
+  */
   async postComment(comment: string | null) {
     const response = await this.axiosInstance.post(
       `${this.organization}/${this.repository}/issues/${this.pullNumber}/comments`, {
