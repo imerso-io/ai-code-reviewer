@@ -26,7 +26,7 @@ class Github {
       }
     })
 
-    return response.data
+    return response
   }
 
   async getFilesChanged(commitHash: string): Promise<FilesChangedResult> {
@@ -37,7 +37,7 @@ class Github {
       }
     })
 
-    return response.data
+    return response
   }
 
   async postComment(comment: string | null) {
