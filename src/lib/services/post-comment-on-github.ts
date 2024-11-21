@@ -1,15 +1,22 @@
 import githubClient from '../clients'
-import { Commits, File, FilesChanged } from '../types'
+import {
+  type Commits,
+  type File,
+  type FilesChanged
+} from '../types'
 import generateReview from './generate-review'
 
+/**
+ *  POST - Post a comment on a pull request with the code to review
+*/
 export async function postCommentOnGithub() {
   try {
-    const commits: Commits[] = (await githubClient.getCommits()).data
+    const commits = (await githubClient.getCommits()).data
 
     let codeToReview = ''
 
     for (const commit of commits) {
-      const response: FilesChanged = (await githubClient.getFilesChanged(commit.sha)).data
+      const response = (await githubClient.getFilesChanged(commit.sha)).data
       codeToReview = response.files.map((file: File) =>
         `Arquivo: ${file.filename}
         Código: """
