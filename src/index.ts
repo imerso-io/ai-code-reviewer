@@ -1,8 +1,8 @@
-import { postCommentOnGithub } from './libs'
+import { logger, postCommentOnGithub } from './libs'
 
 try {
   const response = await postCommentOnGithub()
-  console.log(response)
+  logger.info(response)
 } catch (e) {
-  console.error(e)
+  logger.error(e)
 }
