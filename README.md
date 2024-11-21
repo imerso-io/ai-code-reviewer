@@ -22,7 +22,7 @@ Code context | ❌
 Comando | Descrição
 --- | ---
 `npm install` | Install all dependencies
-`npm run review` | Generate AI reviews of your code integrated with GitHub
+`npm run dev` | Generate AI reviews of your code integrated with GitHub
 
 ## Environment variables
 Variable | Description | Required
